@@ -1,7 +1,12 @@
 <template>
     <label>
         {{label}}
-        <input>
+        <input
+            :value="value"
+            v-bind="$attrs"
+            @input="customInput"
+            v-on="listeners"
+        />
     </label>
 </template>
 
@@ -11,7 +16,7 @@ export default {
   props: {
     value: {
         type: String,
-        default: 'Default label'
+        default: 'Hello'
     },
     label: {
         type: String,

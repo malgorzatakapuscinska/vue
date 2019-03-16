@@ -5,11 +5,15 @@
     <HelloWorld msg="Welcome to Your Vue.js App" />
     <BaseButton :loading=false />
     <BaseInput 
-      :value=value
-      :rows=rows
+      v-model=textValue
+      value=value
       v-bind = "$attrs"
-    
+      label="Input"
+      @change="logChange()"
     />
+    <p>
+      {{textValue}}
+    </p>
   </div>
 </template>
 
@@ -25,6 +29,14 @@ export default {
     HelloWorld,
     BaseButton,
     BaseInput
-  }
+  },
+  data: () => ({
+    textValue: ''
+  }),
+  methods: {
+    logChange() {
+      console.log('change');
+    },
+  },
 };
 </script>
